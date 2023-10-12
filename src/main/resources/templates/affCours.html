@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>COURS</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>IDCOURS</td>
+        <td>MATIERE</td>
+        <td>HEURES</td>
+    </tr>
+    <tr>
+        <td th:text="${monCours.id_cours}"></td>
+        <td th:text="${monCours.matiere}"></td>
+        <td th:text="${monCours.heures}"></td>
+    </tr>
+<!--
+    <tr>
+        <td>IDSESSIONCOURS</td>
+        <td>DATE_DEBUT</td>
+        <td>DATE_FIN</td>
+        <td>NOMBRE INSCRIT</td>
+    </tr>
+    <tr th:each="sess : ${monCours.session}">
+        <td th:text="${sess.id_SessionCours}"></td>
+        <td th:text="${sess.dateDebut}"></td>
+        <td th:text="${sess.dateFin}"></td>
+        <td th:text="${sess.nbreInscrits}"></td>
+    </tr>
+    -->
+    <a href ="/">retour</a>
+</table>
+</body>
+</html>
