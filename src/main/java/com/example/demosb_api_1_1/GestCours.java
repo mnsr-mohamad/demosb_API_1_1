@@ -80,4 +80,40 @@ public class GestCours {
         return "nouveauCours";
     }
 
+
+    @RequestMapping("/selectionNom")
+    String selection(@RequestParam("matiere") String matiere, Map<String, Object> model) {
+        List<Cours> lc;
+        try {
+            lc = coursRepository.findByMatiere(matiere);
+            model.put("monCours", lc);
+
+        } catch (Exception e) {
+            System.out.println("erreur lors de la lecture " + e);
+            model.put("error", e);
+            return "error";
+        }
+        return "affCoursNom";
+
+
+    }
+
+    @RequestMapping("/selectionHR")
+    String selectionByCP(@RequestParam("hr") int hr, Map<String, Object> model) {
+        Collection<Cours> lc;
+
+        try {
+            lc = coursRepository.findAllHRClients(hr);
+            model.put("monCours", lc);
+
+        } catch (Exception e) {
+            System.out.println("erreur lors de la lecture " + e);
+            model.put("error", e);
+            return "error";
+        }
+        return "affCoursHR";
+
+
+    }
+
 }

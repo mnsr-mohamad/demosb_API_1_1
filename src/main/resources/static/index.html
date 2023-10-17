@@ -21,13 +21,30 @@
     <title>ACCUEIL</title>
 </head>
 <body>
-<h1> Bienvenue dans spring boot </h1>
+<h1> Bienvenue  </h1>
+
 <p><a href="cours/tous">Voir tous les cours</a></p>
-<p><form action = "cours/create" method="get">
+
+<br>
+
+<form action = "cours/create" method="get">
     Matiere : <input type = "text" name="matiere"> <br>
     Heures : <input type = "number" name="heures"> <br>
     <input type="submit" name="ok" value="ok">
 </form>
-</p>
+
+<br>
+
+<form action="cours/selectionNom" method="get">
+    Recherche d'un cours avec son matière = <input type="text" name="matiere"/>
+</form>
+
+<br>
+
+<form action="cours/selectionHR" method="get">
+    Recherche d'un cours avec son nombres d'heures = <input type="number" name="hr"/>
+</form>
+
+
 </body>
 </html>
