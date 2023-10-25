@@ -1,74 +1,31 @@
 package com.example.demosb_api_1_1.modele;
 
+import jakarta.persistence.*;
+import lombok.*;
+
 import java.time.LocalDate;
 
+@Data
+@AllArgsConstructor
+@RequiredArgsConstructor
+@NoArgsConstructor
+@ToString
+@Entity
+@Table(name = "APISESSIONCOURS", schema = "ORA23", catalog = "ORCL.CONDORCET.BE")
 public class SessionCours {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sessioncours_generator")
+    @SequenceGenerator(name = "sessioncours_generator", sequenceName = "APISESSIONCOURS_SEQ", allocationSize = 1)
+    private Integer id_SessionCours;
 
-    private int id_SessionCours;
-
+    @NonNull
     private LocalDate dateDebut;
-
+    @NonNull
     private LocalDate dateFin;
-
-    private int nbreInscrits;
-
+    @NonNull
+    private Integer nbreInscrits;
+    @ManyToOne @JoinColumn(name = "ID_COURS")
     private Cours cours;
 
-
-    public SessionCours(int id_SessionCours, LocalDate dateDebut, LocalDate dateFin, int nbreInscrits, Cours cours) {
-        this.id_SessionCours = id_SessionCours;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.nbreInscrits = nbreInscrits;
-        this.cours = cours;
-    }
-
-    public SessionCours(int idSessionCours, LocalDate dateDebut, LocalDate dateFin, int nbreInscrit) {
-        this.id_SessionCours = idSessionCours;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.nbreInscrits = nbreInscrit;
-
-    }
-
-    public int getId_SessionCours() {
-        return id_SessionCours;
-    }
-
-    public void setId_SessionCours(int id_SessionCours) {
-        this.id_SessionCours = id_SessionCours;
-    }
-
-    public LocalDate getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(LocalDate dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public LocalDate getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(LocalDate dateFin) {
-        this.dateFin = dateFin;
-    }
-
-    public int getNbreInscrits() {
-        return nbreInscrits;
-    }
-
-    public void setNbreInscrits(int nbreInscrits) {
-        this.nbreInscrits = nbreInscrits;
-    }
-
-    public Cours getCours() {
-        return cours;
-    }
-
-    public void setCours(Cours cours) {
-        this.cours = cours;
-    }
 }

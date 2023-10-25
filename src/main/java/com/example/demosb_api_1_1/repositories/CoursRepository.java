@@ -18,4 +18,5 @@ public interface CoursRepository extends JpaRepository<Cours,Integer> {
             true)
     Collection<Cours> findAllHRClients(@Param("hr") Integer hr);
 
+
 }
