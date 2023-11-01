@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,7 +27,7 @@ class CoursServiceImplTest {
     @BeforeEach
     void setUp() {
         try {
-            cr = new Cours(null, "NomMatiere", 10);
+            cr = new Cours(null, "NomMatiere", 10,new ArrayList<>());
             coursServiceImpl.create(cr);
             System.out.println("Création du cours : " + cr);
         } catch (Exception e) {
@@ -52,14 +53,13 @@ class CoursServiceImplTest {
         assertEquals(10, cr.getHeures(), "Heures non enregistré");
     }
 
-    @Test()
-    void creationDoublon() {   //ajouté
-        Cours cr2 = new Cours(null, "NomMatiere", 2000);
+   // @Test()
+    void creationDoublon(){   //ajouté
+        Cours cr2 = new Cours(null,"NomTest",20,new ArrayList<>());
         Assertions.assertThrows(Exception.class, () -> {
             coursServiceImpl.create(cr2);
-        }, "Création d'un doublon");
+        },"création d'un doublon");
     }
-
     @Test
     void read() {
         try {

@@ -103,7 +103,7 @@ public class GestCours {
         Collection<Cours> lc;
 
         try {
-            lc = coursRepository.findAllHRClients(hr);
+            lc = coursRepository.findAllHRCours(hr);
             model.put("monCours", lc);
 
         } catch (Exception e) {

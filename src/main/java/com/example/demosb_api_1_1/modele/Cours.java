@@ -1,6 +1,7 @@
 package com.example.demosb_api_1_1.modele;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,7 +26,10 @@ public class Cours {
     private Integer heures;
 
 
-
-    //private List<SessionCours> session = new ArrayList<>();
-
+    @JsonIgnore
+    //  @OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
+    // @OneToMany(mappedBy = "client" , fetch = FetchType.LAZY,cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy = "cours")
+    @ToString.Exclude
+    private List<SessionCours> sessionCours;
 }

@@ -16,7 +16,7 @@ public interface CoursRepository extends JpaRepository<Cours,Integer> {
 
     @Query(value =" SELECT * FROM APICOURS WHERE HEURES = :hr",nativeQuery =
             true)
-    Collection<Cours> findAllHRClients(@Param("hr") Integer hr);
+    Collection<Cours> findAllHRCours(@Param("hr") Integer hr);
 
 
 }
