@@ -2,7 +2,9 @@ package com.example.demosb_api_1_1;
 
 
 import com.example.demosb_api_1_1.modele.Cours;
+import com.example.demosb_api_1_1.modele.SessionCours;
 import com.example.demosb_api_1_1.repositories.CoursRepository;
+import com.example.demosb_api_1_1.repositories.SessionCoursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,7 @@ public class GestCours {
     @Autowired     //instanciation "automatique" par le framework avec les paramètres indiqués, il s'agit d'un singleton
     //CoursDAO coursDAO;
     CoursRepository coursRepository;
+    SessionCoursRepository sessionCoursRepository;
 
     @RequestMapping("/tous")
     public String affTous(Map<String, Object> model) {
@@ -99,11 +102,12 @@ public class GestCours {
     }
 
     @RequestMapping("/selectionHR")
-    String selectionByCP(@RequestParam("hr") int hr, Map<String, Object> model) {
+    String selectionByHR(@RequestParam("hr") int hr, Map<String, Object> model) {
         Collection<Cours> lc;
 
         try {
-            lc = coursRepository.findAllHRCours(hr);
+            //lc = coursRepository.findAllHRCours(hr);
+            lc = coursRepository.findByHeures(hr);
             model.put("monCours", lc);
 
         } catch (Exception e) {
@@ -115,5 +119,8 @@ public class GestCours {
 
 
     }
+
+
+
 
 }

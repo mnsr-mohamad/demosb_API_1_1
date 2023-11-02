@@ -14,9 +14,13 @@ public interface CoursRepository extends JpaRepository<Cours,Integer> {
 
     public List<Cours> findByMatiere(String matiere);
 
+    /*
     @Query(value =" SELECT * FROM APICOURS WHERE HEURES = :hr",nativeQuery =
             true)
-    Collection<Cours> findAllHRCours(@Param("hr") Integer hr);
+    Collection<Cours> findAllHRCours(@Param("hr") Integer hr);*/
+
+    public List<Cours> findByHeures(int heures);
+
 
 
 }

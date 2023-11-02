@@ -21,6 +21,11 @@ public class CoursServiceImpl implements InterfCoursService {
         return coursRepository.findByMatiere(matiere);
     }
 
+    @Override
+    public List<Cours> readh(int heures) {
+        return coursRepository.findByHeures(heures);
+    }
+
 
     @Override
     public Cours create(Cours cours) throws Exception {

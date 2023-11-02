@@ -106,4 +106,27 @@ class CoursServiceImplTest {
         }
 
     }
+
+    @Test
+    void readh() {
+
+        try{
+            List<Cours> crs = coursServiceImpl.readh(5);
+            boolean trouve = false;
+            for(Cours cr : crs){
+                if(cr.getHeures().equals(5)){
+                    trouve = true;
+                }
+                else{
+                    fail("un recordre ne correspond pas , nombres d'heures = " +cr.getHeures());
+                }
+                assertTrue(trouve," record non trouve dans la liste ");
+            }
+        }
+        catch (Exception e){
+            fail("Recherche infrutueuse");
+        }
+
+
+    }
 }
