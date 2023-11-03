@@ -25,17 +25,26 @@ public class GestSessionCours {
     @Autowired
     private InterfCoursService coursService;
 
+    @RequestMapping("/tous")
+    public String affTous(Map<String, Object> model) {
+        System.out.println("recherche sessions");
+        List<SessionCours> liste;
+        try {
+
+            liste = sessionCoursService.all();
+            model.put("mesSessions", liste);
+        } catch (Exception e) {
+            System.out.println("----------erreur lors de la recherche-------- " + e);
+            return "error";
+        }
+        return "affichagetousSessions";
+    }
+
     @RequestMapping("/rechercheParCours")
     public String read(@RequestParam int idcours, Map<String, Object> model){
         System.out.println("Recherche du cours n° " + idcours);
         try {
             Cours cr = coursService.read(idcours);
-           /* Local lc = new Local(null, "M22", 19, "Moyenne Classe", new ArrayList<>());
-            SessionCours sc = new SessionCours(LocalDate.now(),LocalDate.now().plusDays(10),20,cr,lc);
-            sessionCoursService.create(sc);
-            List<SessionCours> lsc = sessionCoursService.getSessionCours(cr);
-            model.put("moncours",cr);
-            model.put("sesscours",lsc);*/
             List<SessionCours> lsc = sessionCoursService.getSessionCours(cr);
             model.put("moncours",cr);
             model.put("sesscours",lsc);
