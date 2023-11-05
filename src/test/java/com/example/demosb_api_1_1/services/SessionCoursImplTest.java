@@ -145,4 +145,24 @@ class SessionCoursImplTest {
             fail("Erreur dans de recherche");
         }
     }
+
+    @Test
+    void rechNbreInscrit() {
+        try{
+            List<SessionCours> sce = sessionCoursImpl.rechNbreInscrit(20);
+            boolean trouve = false;
+            for(SessionCours s : sce){
+                if(s.getNbreInscrits().equals(20)){
+                    trouve = true;
+                }
+                else{
+                    fail("un recorde ne correspond pas , nombres d'inscrits = " +s.getNbreInscrits());
+                }
+                assertTrue(trouve," record non trouve dans la liste ");
+            }
+        }
+        catch (Exception e){
+            fail("Recherche infrutueuse");
+        }
+    }
 }

@@ -52,4 +52,9 @@ public class SessionCoursImpl implements InterfSessionCoursService {
        List<SessionCours> lsc = sessionCoursRepository.findSessionCoursByCours(cours);
        return lsc;
     }
+
+    @Override
+    public List<SessionCours> rechNbreInscrit(int nbre) {
+        return sessionCoursRepository.findSessionCoursByNbreInscrits(nbre);
+    }
 }

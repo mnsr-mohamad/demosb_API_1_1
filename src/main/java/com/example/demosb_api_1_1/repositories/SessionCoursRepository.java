@@ -13,5 +13,6 @@ public interface SessionCoursRepository extends JpaRepository<SessionCours, Inte
 
     public List<SessionCours> findSessionCoursByCours(Cours cr);
 
-    public List<SessionCours> findSessionCoursByDateDebut(Date dd);
+    public List<SessionCours> findSessionCoursByNbreInscrits(int nbre);
+    //public List<SessionCours> findSessionCoursByDateDebut(Date dd);
 }

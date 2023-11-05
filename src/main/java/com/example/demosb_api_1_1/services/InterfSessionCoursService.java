@@ -9,6 +9,7 @@ public interface InterfSessionCoursService extends InterfService<SessionCours> {
 
     public List<SessionCours> getSessionCours(Cours cours);
 
+    public List<SessionCours> rechNbreInscrit(int nbre);
 
 
 

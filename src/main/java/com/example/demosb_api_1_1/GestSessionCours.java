@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +58,23 @@ public class GestSessionCours {
         return "affsesscours";
     }
 
+    @RequestMapping("/selectionNbreInscrit")
+    String NbreInscrit(@RequestParam("nbreInscrit") int nbreInscrit, Map<String, Object> model) {
+        Collection<SessionCours> lsc;
 
+        try {
+
+            lsc = sessionCoursService.rechNbreInscrit(nbreInscrit);
+            model.put("sesscours", lsc);
+
+        } catch (Exception e) {
+            System.out.println("erreur lors de la lecture " + e);
+            model.put("error", e);
+            return "error";
+        }
+        return "affsesscours";
+
+
+    }
 
 }
