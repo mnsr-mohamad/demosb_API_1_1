@@ -44,4 +44,9 @@ public class LocalServiceImpl implements InterfLocalService {
     public List<Local> all() throws Exception {
         return localRepository.findAll();
     }
+
+    @Override
+    public List<Local> readPlaces(int places) {
+        return localRepository.findByPlaces(places);
+    }
 }
