@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Table(name = "APISESSIONCOURS", schema = "ORA23", catalog = "ORCL.CONDORCET.BE")
 public class SessionCours {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sessioncours_generator")
-    @SequenceGenerator(name = "sessioncours_generator", sequenceName = "APISESSIONCOURS_SEQ", allocationSize = 1)
+    @SequenceGenerator(name = "sessioncours_generator", sequenceName = "API_SESSIONCOURS_SEQ", allocationSize = 1)
     @Column(name = "ID_SESSIONCOURS")
     private Integer id_SessionCours;
 
