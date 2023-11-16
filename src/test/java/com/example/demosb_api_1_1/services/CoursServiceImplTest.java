@@ -48,7 +48,7 @@ class CoursServiceImplTest {
 
     @Test
     void create() {
-        assertNotEquals(0, cr.getId_cours(), "ID du cours non incrémenté");
+        assertNotEquals(0, cr.getIdcours(), "ID du cours non incrémenté");
         assertEquals("NomMatiere", cr.getMatiere(), "Matiere non enregistré");
         assertEquals(10, cr.getHeures(), "Heures non enregistré");
     }
@@ -63,7 +63,7 @@ class CoursServiceImplTest {
     @Test
     void read() {
         try {
-            int idcours = cr.getId_cours();
+            int idcours = cr.getIdcours();
             Cours cr2 = coursServiceImpl.read(idcours);
             assertEquals("NomMatiere", cr2.getMatiere(), "Matiere différentes " + "NomMatiere" + "-" + cr2.getMatiere());
             assertEquals(10, cr2.getHeures(), "Nombre d'heures différents " + "10" + "-" + cr2.getHeures());
@@ -87,7 +87,7 @@ class CoursServiceImplTest {
     void delete() {
         try{
             coursServiceImpl.delete(cr);  Assertions.assertThrows(Exception.class, () -> {
-                coursServiceImpl.read(cr.getId_cours());
+                coursServiceImpl.read(cr.getIdcours());
             },"record non effacé");
         }catch (Exception e ){
             fail("Erreur d'affacement "+e);
@@ -118,7 +118,7 @@ class CoursServiceImplTest {
                     trouve = true;
                 }
                 else{
-                    fail("un recordre ne correspond pas , nombres d'heures = " +cr.getHeures());
+                    fail("un recorde ne correspond pas , nombres d'heures = " +cr.getHeures());
                 }
                 assertTrue(trouve," record non trouve dans la liste ");
             }

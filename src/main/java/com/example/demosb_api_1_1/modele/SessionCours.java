@@ -31,7 +31,7 @@ public class SessionCours {
 
     @NonNull
     @ManyToOne
-    @JoinColumn(name = "ID_COURS")
+    @JoinColumn(name = "IDCOURS")
     private Cours cours;
 
     @NonNull

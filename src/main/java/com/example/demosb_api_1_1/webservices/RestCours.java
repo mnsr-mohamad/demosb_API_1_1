@@ -46,7 +46,7 @@ public class RestCours {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Cours> majCours(@PathVariable(value = "id") int id, @RequestBody Cours nouvcours) throws Exception {
         System.out.println("maj du cours id =  " + id);
-        nouvcours.setId_cours(id);
+        nouvcours.setIdcours(id);
         Cours crs = coursServiceImpl.update(nouvcours);
         return new ResponseEntity<>(crs, HttpStatus.OK);
     }

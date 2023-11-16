@@ -54,7 +54,7 @@ public class DemosbApi11Application implements CommandLineRunner {
         )
         {
             while (rs.next()) {
-                int idcours = rs.getInt("ID_COURS");
+                int idcours = rs.getInt("IDCOURS");
                 String matière = rs.getString("MATIERE");
                 int heures = rs.getInt("HEURES");
                 System.out.println(idcours + " " + matière + " " + heures);

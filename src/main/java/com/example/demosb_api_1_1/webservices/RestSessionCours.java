@@ -21,12 +21,16 @@ public class RestSessionCours {
     @Autowired
     private InterfSessionCoursService sessionCoursServiceImpl;
 
-    //-------------------Retrouver la session qui correspondant à un id donné--------------------------------------------------------
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<SessionCours> getSessionCours(@PathVariable(value = "id") int id) throws Exception {
-        System.out.println("recherche de la session  d' id " + id);
-        SessionCours sessionCours = sessionCoursServiceImpl.read(id);
-        return new ResponseEntity<>(sessionCours, HttpStatus.OK);
+    @Autowired
+    private InterfCoursService coursServiceImpl;
+
+    //-------------------Retrouver la session qui correspondant à un id cours donné--------------------------------------------------------
+    @RequestMapping(value = "/idcours={id}", method = RequestMethod.GET)
+    public ResponseEntity<List<SessionCours>> getSessionCours(@PathVariable(value = "id") int id) throws Exception {
+        System.out.println("recherche de la session du cours d'id  " + id);
+        Cours cr  = coursServiceImpl.read(id);
+        List<SessionCours> lsc = sessionCoursServiceImpl.getSessionCours(cr);
+        return new ResponseEntity<>(lsc, HttpStatus.OK);
     }
 
     //-------------------Retrouver des sessions  avec un nombres d'inscrits donné--------------------------------------------------------
@@ -41,7 +45,7 @@ public class RestSessionCours {
     //-------------------Créer une session --------------------------------------------------------
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<SessionCours> createSessionCours(@RequestBody SessionCours sessionCours) throws Exception {
-        System.out.println("Création de la session  " );
+        System.out.println("Création de la session ");
         sessionCoursServiceImpl.create(sessionCours);
         return new ResponseEntity<>(sessionCours, HttpStatus.OK);
     }
@@ -55,7 +59,7 @@ public class RestSessionCours {
         return new ResponseEntity<>(sc, HttpStatus.OK);
     }
 
-    //-------------------Effacer uneqsession d'un id donné--------------------------------------------------------
+    //-------------------Effacer une session d'un id donné--------------------------------------------------------
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteSessionCours(@PathVariable(value = "id") int id) throws Exception {
         System.out.println("effacement de la session d'id " + id);
