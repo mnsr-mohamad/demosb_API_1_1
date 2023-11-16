@@ -42,10 +42,10 @@ public class GestSessionCours {
     }
 
     @RequestMapping("/rechercheParCours")
-    public String read(@RequestParam int idcours, Map<String, Object> model){
-        System.out.println("Recherche du cours n° " + idcours);
+    public String read(@RequestParam int id_cours, Map<String, Object> model){
+        System.out.println("Recherche du cours n° " + id_cours);
         try {
-            Cours cr = coursService.read(idcours);
+            Cours cr = coursService.read(id_cours);
             List<SessionCours> lsc = sessionCoursService.getSessionCours(cr);
             model.put("moncours",cr);
             model.put("sesscours",lsc);

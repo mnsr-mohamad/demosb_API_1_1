@@ -41,7 +41,7 @@ public class CoursServiceImpl implements InterfCoursService {
 
     @Override
     public Cours update(Cours cours) throws Exception {
-       read(cours.getIdcours());
+       read(cours.getId_cours());
        coursRepository.save(cours);
        return cours;
     }
@@ -49,7 +49,7 @@ public class CoursServiceImpl implements InterfCoursService {
     @Override
     public void delete(Cours cours) throws Exception {
 
-        coursRepository.deleteById(cours.getIdcours());
+        coursRepository.deleteById(cours.getId_cours());
     }
 
     @Override

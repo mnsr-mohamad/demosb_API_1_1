@@ -54,10 +54,10 @@ public class DemosbApi11Application implements CommandLineRunner {
         )
         {
             while (rs.next()) {
-                int idcours = rs.getInt("IDCOURS");
+                int id_cours = rs.getInt("ID_COURS");
                 String matière = rs.getString("MATIERE");
                 int heures = rs.getInt("HEURES");
-                System.out.println(idcours + " " + matière + " " + heures);
+                System.out.println(id_cours + " " + matière + " " + heures);
             }
         } catch (SQLException e) {
             System.out.println("erreur SQL " + e);
