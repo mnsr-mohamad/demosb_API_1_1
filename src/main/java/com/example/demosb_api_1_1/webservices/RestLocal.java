@@ -37,6 +37,15 @@ public class RestLocal {
         return new ResponseEntity<>(local, HttpStatus.OK);
     }
 
+    //-------------------Retrouver un local  avec son sigle--------------------------------------------------------
+    @RequestMapping(value = "/sigle={sigle}", method = RequestMethod.GET)
+    public ResponseEntity<List<Local>> listLocalSigle(@PathVariable(value = "sigle") String sigle) throws Exception {
+        System.out.println("recherche du local avec le sigle " + sigle);
+        List<Local> local;
+        local = localServiceImpl.read(sigle);
+        return new ResponseEntity<>(local, HttpStatus.OK);
+    }
+
     //-------------------Créer un local--------------------------------------------------------
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<Local> createLocal(@RequestBody Local local) throws Exception {

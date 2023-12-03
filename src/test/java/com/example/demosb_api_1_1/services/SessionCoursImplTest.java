@@ -48,7 +48,7 @@ class SessionCoursImplTest {
             localServiceImpl.create(loc);
             System.out.println("Création du local : " + loc);
 
-            sc = new SessionCours(LocalDate.now(), LocalDate.now().plusDays(20), 20, cr, loc);
+            sc = new SessionCours(Date.valueOf(LocalDate.now()),Date.valueOf(LocalDate.now().plusDays(20)), 20, cr, loc);
             sessionCoursImpl.create(sc);
             System.out.println("Création de la session : " + sc);
 
@@ -102,7 +102,7 @@ class SessionCoursImplTest {
     @Test
     void update() {
         try {
-            sc.setDateDebut(LocalDate.now().plusDays(10));
+            sc.setDateDebut(Date.valueOf(LocalDate.now().plusDays(10)));
             sc = sessionCoursImpl.update(sc);
             assertEquals(sc.getDateDebut(), LocalDate.now().plusDays(10), "Date début différentes " + sc.getDateDebut() + " - " + LocalDate.now().plusDays(10));
         } catch (Exception e) {

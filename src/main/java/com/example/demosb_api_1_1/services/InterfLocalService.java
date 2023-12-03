@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface InterfLocalService extends InterfService<Local>{
     public List<Local> readPlaces(int places);
+
+    public List<Local> read(String sigle);
 }

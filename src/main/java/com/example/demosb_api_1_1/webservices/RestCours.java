@@ -34,6 +34,15 @@ public class RestCours {
         return new ResponseEntity<>(cours, HttpStatus.OK);
     }
 
+    //-------------------Retrouver un cours  avec sa matière--------------------------------------------------------
+    @RequestMapping(value = "/matiere={matiere}", method = RequestMethod.GET)
+    public ResponseEntity<List<Cours>> listCoursMatiere(@PathVariable(value = "matiere") String matiere) throws Exception {
+        System.out.println("recherche de la matiere " + matiere);
+        List<Cours> cours;
+        cours = coursServiceImpl.read(matiere);
+        return new ResponseEntity<>(cours, HttpStatus.OK);
+    }
+
     //-------------------Créer un cours--------------------------------------------------------
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<Cours> createCours(@RequestBody Cours cours) throws Exception {

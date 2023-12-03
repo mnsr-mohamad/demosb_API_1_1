@@ -9,4 +9,5 @@ public interface InterfCoursService extends InterfService<Cours> {
     public List<Cours> read(String matiere);
     public List<Cours> readh(int heures);
 
+
 }

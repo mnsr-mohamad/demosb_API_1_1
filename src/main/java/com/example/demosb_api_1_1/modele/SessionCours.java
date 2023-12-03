@@ -21,10 +21,10 @@ public class SessionCours {
 
     @Column(name = "DATEDEBUT")
     @NonNull
-    private LocalDate dateDebut;
+    private Date dateDebut;
     @Column(name = "DATEFIN ")
     @NonNull
-    private LocalDate dateFin;
+    private Date dateFin;
     @Column(name = "NBREINSCRITS")
     @NonNull
     private Integer nbreInscrits;

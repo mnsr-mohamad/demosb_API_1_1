@@ -11,4 +11,5 @@ import java.util.List;
 public interface LocalRepository extends JpaRepository<Local, Integer> {
 
     public List<Local> findByPlaces(int places);
+    public List<Local> findBySigle(String sigle);
 }

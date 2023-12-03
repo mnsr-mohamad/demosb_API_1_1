@@ -1,5 +1,6 @@
 package com.example.demosb_api_1_1.services;
 
+import com.example.demosb_api_1_1.modele.Cours;
 import com.example.demosb_api_1_1.modele.Local;
 import com.example.demosb_api_1_1.repositories.LocalRepository;
 import jakarta.transaction.Transactional;
@@ -48,5 +49,10 @@ public class LocalServiceImpl implements InterfLocalService {
     @Override
     public List<Local> readPlaces(int places) {
         return localRepository.findByPlaces(places);
+    }
+
+    @Override
+    public List<Local> read(String sigle) {
+        return localRepository.findBySigle(sigle);
     }
 }

@@ -25,12 +25,22 @@ public class RestSessionCours {
     private InterfCoursService coursServiceImpl;
 
     //-------------------Retrouver la session qui correspondant à un id cours donné--------------------------------------------------------
-    @RequestMapping(value = "/idcours={id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/id_cours={id}", method = RequestMethod.GET)
     public ResponseEntity<List<SessionCours>> getSessionCours(@PathVariable(value = "id") int id) throws Exception {
         System.out.println("recherche de la session du cours d'id  " + id);
         Cours cr  = coursServiceImpl.read(id);
         List<SessionCours> lsc = sessionCoursServiceImpl.getSessionCours(cr);
         return new ResponseEntity<>(lsc, HttpStatus.OK);
+    }
+
+
+    //-------------------Retrouver les sessions correspondant à un id donné--------------------------------------------------------
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<SessionCours> getCours(@PathVariable(value = "id") int id) throws Exception {
+        System.out.println("recherche du cours d' id " + id);
+        SessionCours sessionCours = sessionCoursServiceImpl.read(id);
+        return new ResponseEntity<>(sessionCours, HttpStatus.OK);
     }
 
     //-------------------Retrouver des sessions  avec un nombres d'inscrits donné--------------------------------------------------------
