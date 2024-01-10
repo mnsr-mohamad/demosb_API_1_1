@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -57,4 +58,11 @@ public class SessionCoursImpl implements InterfSessionCoursService {
     public List<SessionCours> rechNbreInscrit(int nbre) {
         return sessionCoursRepository.findSessionCoursByNbreInscrits(nbre);
     }
+
+    @Override
+    public List<SessionCours> listSessionCoursByDate(Date date) {
+        return sessionCoursRepository.findSessionCoursByDateDebut(date);
+    }
+
+
 }

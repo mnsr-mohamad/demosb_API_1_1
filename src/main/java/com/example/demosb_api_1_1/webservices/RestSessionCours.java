@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "*")
@@ -90,6 +91,15 @@ public class RestSessionCours {
     public ResponseEntity<Void> handleIOException(Exception ex) {
         System.out.println("erreur : " + ex.getMessage());
         return ResponseEntity.notFound().header("error", ex.getMessage()).build();
+    }
+
+    //-------------------Lister les session de cours avec date--------------------------------------------------------
+    @RequestMapping(value = "/dateDebut={dateDebut}", method = RequestMethod.GET)
+    public ResponseEntity<List<SessionCours>> listSessionCoursDate(@PathVariable(value = "dateDebut") Date dateDebut) throws Exception {
+        System.out.println("recherche de la date " + dateDebut);
+        List<SessionCours> sessionCours;
+        sessionCours = sessionCoursServiceImpl.listSessionCoursByDate(dateDebut);
+        return new ResponseEntity<>(sessionCours, HttpStatus.OK);
     }
 
 

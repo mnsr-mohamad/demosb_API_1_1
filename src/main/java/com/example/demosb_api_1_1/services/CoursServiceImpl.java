@@ -6,8 +6,10 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(rollbackOn = Exception.class)
@@ -25,6 +27,18 @@ public class CoursServiceImpl implements InterfCoursService {
     public List<Cours> readh(int heures) {
         return coursRepository.findByHeures(heures);
     }
+
+    @Override
+    public List<String> getAllMatiere() {
+        /*List<Cours> coursList = coursRepository.findAll();
+        List<String> matieres = coursList.stream()
+                .map(Cours::getMatiere)
+                .distinct()
+                .collect(Collectors.toList());*/
+        return coursRepository.distinctMatiere();
+
+    }
+
 
 
     @Override

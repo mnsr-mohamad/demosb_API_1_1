@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,6 +21,11 @@ public interface CoursRepository extends JpaRepository<Cours,Integer> {
     Collection<Cours> findAllHRCours(@Param("hr") Integer hr);*/
 
     public List<Cours> findByHeures(int heures);
+
+    @Query("SELECT DISTINCT c.matiere FROM Cours c")
+    List<String> distinctMatiere();
+
+
 
 
 

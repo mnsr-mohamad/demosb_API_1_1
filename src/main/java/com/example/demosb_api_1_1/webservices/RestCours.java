@@ -3,10 +3,12 @@ package com.example.demosb_api_1_1.webservices;
 import com.example.demosb_api_1_1.modele.Cours;
 import com.example.demosb_api_1_1.services.InterfCoursService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "*")
@@ -75,6 +77,15 @@ public class RestCours {
         System.out.println("recherche de tous les cours");
         return new ResponseEntity<>(coursServiceImpl.all(), HttpStatus.OK);
     }
+    //-------------------Lister les matières  --------------------------------------------------------------
+
+    @RequestMapping(value = "/allMatiere", method = RequestMethod.GET)
+    public ResponseEntity<List<String>> listAllMatieres() throws Exception {
+        System.out.println("recherche de toutes les matières");
+        List<String> matieres = coursServiceImpl.getAllMatiere();
+        return new ResponseEntity<>(matieres, HttpStatus.OK);
+    }
+
 
     //-------------------Gérer les erreurs--------------------------------------------------------
     @ExceptionHandler({Exception.class})
@@ -82,5 +93,10 @@ public class RestCours {
         System.out.println("erreur : " + ex.getMessage());
         return ResponseEntity.notFound().header("error", ex.getMessage()).build();
     }
+
+
+
+
+
 
 }
